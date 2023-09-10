@@ -1,1 +1,84 @@
-polySphere -r 6 -sx 20 -sy 20 -ax 0 1 0 -cuv 2 -ch 1;
+//bace
+polySphere -radius 3 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move 0 3 0;
+// middle 
+polySphere -radius 2 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move 0 7.4 0;
+//top
+polySphere -radius 1.3 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move 0 10 0 ;
+
+// top hat 
+polyCylinder -constructionHistory on -object on -radius 0.985857 -height 2.413298 -sc 1 -createUVs 3 ;
+move 0 12.5 0;
+
+// top hat bottom
+polyCylinder -constructionHistory on -object on -radius 1.733814 -height 0.271772 -sc 1 -createUVs 3 ;
+move 0 11.2 0;
+
+// nose 
+polyCone -constructionHistory on -object on -radius 0.903975 -height 2.407296 -createUVs 3 ;
+move 0 10 2;
+rotate -relative -worldSpace -forceOrderXYZ 90 0 0 ;
+
+// left eye
+polySphere -radius .5 -subdivisionsX 4 -subdivisionsY 4 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move 1 10 .5;
+rotate -relative -worldSpace -forceOrderXYZ 0 45.7 0 ;
+rotate -relative -worldSpace -forceOrderXYZ 90 0 0 ;
+rotate -relative -worldSpace -forceOrderXYZ 0 64.676845 0 ;
+move -relative 0 0.2284 0 ;
+move -relative -0.109809 0 0 ;
+move -relative 0 0.10354 0 ;
+move -relative -0.072252 0 0 ;
+
+// right eye
+polySphere -radius .5 -subdivisionsX 4 -subdivisionsY 4 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -1 10 .5;
+rotate -relative -worldSpace -forceOrderXYZ 0 45.7 0 ;
+rotate -relative -worldSpace -forceOrderXYZ 90 0 0 ;
+rotate -relative -ws -fo 0 -58.7 0 ;
+move -relative 0 0.326359 0 ;
+move -relative -os -wd 0 -0.165871 0 ;
+
+// left arm
+polyCylinder -constructionHistory on -object on -r 0.340915 -height 3.374187 -subdivisionsCaps 1 -createUVs 3 ;
+move -3.439 7.755 -0.056;
+rotate -relative -worldSpace -forceOrderXYZ 0 0 -100.464601 ;
+
+// right arm
+polyCylinder -constructionHistory on -object on -r 0.340915 -height 3.374187 -subdivisionsCaps 1 -createUVs 3 ;
+move 3.439 7.755 -0.056;
+rotate -relative -worldSpace -forceOrderXYZ 0 0 100.464601 ;
+
+// buttons
+
+// button one
+polySphere -radius .5 -subdivisionsX 4 -subdivisionsY 4 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move 0 3.2 2.8;
+rotate -relative -worldSpace -forceOrderXYZ 90 0 0 ;
+
+// button two
+polySphere -radius .5 -subdivisionsX 4 -subdivisionsY 4 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move 0 4.332 2.535;
+rotate -relative -worldSpace -forceOrderXYZ 69.747 0 0 ;
+
+// button three
+polySphere -radius .5 -subdivisionsX 4 -subdivisionsY 4 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move 0 5.217 1.748;
+rotate -relative -worldSpace -forceOrderXYZ 51.950 0 0 ;
+
+//button four 
+polySphere -radius .5 -subdivisionsX 4 -subdivisionsY 4 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move 0 6.820 1.710;
+rotate -relative -worldSpace -forceOrderXYZ 102.415 0 0 ;
+
+//button five
+polySphere -radius .5 -subdivisionsX 4 -subdivisionsY 4 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move 0 7.746 1.710;
+rotate -relative -worldSpace -forceOrderXYZ 77.765 0 0 ;
+
+// button six//
+polySphere -radius .5 -subdivisionsX 4 -subdivisionsY 4 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move 0 8.624 1.410;
+rotate -relative -worldSpace -forceOrderXYZ 61.915 0 0 ;
