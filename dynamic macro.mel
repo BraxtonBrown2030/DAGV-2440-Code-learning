@@ -1,48 +1,68 @@
 float $size = 3;
 string $objects[];
-int $numberofSpans;
-int $randomPostionY = rand(10,21);
-int $randomPostionX = rand(-1,12);
-int $randomPostionZ = rand(-1,11);
+int $numberofSpawns = 0;
+
+// animation object drop
+
+// change () to spawn cubes / balls that fall and animate
+//  ball = 1  cube = 2
+int $spawnObject = (2);
 
 
 
 float $ballScale = (3); // change () to modify the ball size
+
 float $cubeScale = (3); // change () to modify the cube size
-int $maxnumberofSpawns = (2);  // change number of spawn
+
+int $maxnumberofSpawns = (2);  // change number of spawns
+
+while($spawnObject == 1 && $maxnumberofSpawns > $numberofSpawns)
+    {
+
+    int $randomPostionY = rand(10,21);
+    int $randomPostionX = rand(-1,12);
+    int $randomPostionZ = rand(-1,11);
 
 
+    //ball
+    polySphere -radius $ballScale -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1 -name Ball;
+    move $randomPostionX $randomPostionY $randomPostionZ;
 
 
+    setKeyframe -value $randomPostionY - at translateY -t 1;
+
+    setKeyframe -value(($randomPostionY - $randomPostionY) + ($ballScale)) -at translateY -time 8;
+
+    setKeyframe -value($randomPostionY / 2) -at translateY -time 16;
+    keyTangent -itt linear -ott linear;
+
+    setKeyframe -value(($randomPostionY - $randomPostionY) + ($ballScale)) - at translateY -time 24;
+
+    $numberofSpawns++;
+
+    }
+
+while($spawnObject == 2  && $maxnumberofSpawns > $numberofSpawns)
+ {
+
+    int $randomPostionY = rand(10,21);
+    int $randomPostionX = rand(-1,12);
+    int $randomPostionZ = rand(-1,11);
 
 
-while($numberofSpans < $maxnumberofSpawns)
-//ball
-polySphere -radius $ballScale -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1 -name Ball;
-move $randomPostionX $randomPostionY $randomPostionZ;
+    // cube spawn and keyframe change
 
+    polyCube -ch on -o on -w $cubeScale -h $cubeScale -d $cubeScale -cuv 4 ;
+    move $randomPostionX $randomPostionY $randomPostionZ;
 
-setKeyframe -value $randomPostionY - at translateY -t 1;
+    setKeyframe -value $randomPostionY - at translateY -t 1;
 
-setKeyframe -value(($randomPostionY - $randomPostionY) + ($ballScale)) -at translateY -time 8;
+    setKeyframe -value(($randomPostionY - $randomPostionY) + ($cubeScale / 2)) -at translateY -time 8;
 
-setKeyframe -value($randomPostionY / 2) -at translateY -time 16;
-keyTangent -itt linear -ott linear;
+    setKeyframe -value($randomPostionY / 2) -at translateY -time 16;
+    keyTangent -itt linear -ott linear;
 
-setKeyframe -value(($randomPostionY - $randomPostionY) + ($ballScale)) - at translateY -time 24;
+    setKeyframe -value(($randomPostionY - $randomPostionY) + ($cubeScale / 2)) - at translateY -time 24;
 
-// cube
-
-polyCube -ch on -o on -w $cubeScale -h $cubeScale -d $cubeScale -cuv 4 ;
-move $randomPostionX $randomPostionY $randomPostionZ;
-
-setKeyframe -value $randomPostionY - at translateY -t 1;
-
-setKeyframe -value(($randomPostionY - $randomPostionY) + ($cubeScale / 2)) -at translateY -time 8;
-
-setKeyframe -value($randomPostionY / 2) -at translateY -time 16;
-keyTangent -itt linear -ott linear;
-
-setKeyframe -value(($randomPostionY - $randomPostionY) + ($cubeScale / 2)) - at translateY -time 24;
-
-$numberofSpans++;
+    $numberofSpawns++;
+ }
