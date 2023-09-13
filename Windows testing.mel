@@ -1,0 +1,27 @@
+
+float $stairHight = 2;
+float $stairDepth = 2;
+float $stairWidth = 8;
+
+float $stairYvalue = $stairHight;
+
+int $stiarnumber;
+int $indacatedStepnumber = 120;
+
+float $offcenter;
+float $yOffSet = 13;
+
+while($indacatedStepnumber > $stiarnumber)
+{
+
+string $steps[] = `polyCube -height $stairHight -width $stairWidth -depth $stairDepth -n "steps"`;
+
+$offcenter = $stairWidth / 2;
+
+move $offcenter ($stairYvalue + $stiarnumber) 0;
+
+rotate -y ($yOffSet * $stiarnumber) -pivot 0 0 0 -componentSpace;
+
+$stiarnumber++;
+
+}

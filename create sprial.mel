@@ -1,0 +1,27 @@
+
+float $stairHight;
+float $stairDepth;
+float $stairWidth;
+
+int $maxNumberOfStairs = 2;
+int $curNumberOfStairs;
+
+
+
+while($curNumberOfStairs < $maxNumberOfStairs)
+{
+   //           y                   x                 z
+   polyCube -height $stairHight -width $stairWidth -depth $stairDepth;
+    
+
+
+
+   $curNumberOfStairs ++;
+}
+
+for($curNumberOfStairs3 = 0; $maxNumberOfStairs2 > $curNumberOfStairs3; $curNumberOfStairs3++)
+{
+
+        
+
+}
