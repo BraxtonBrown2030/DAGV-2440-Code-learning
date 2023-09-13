@@ -1,27 +1,29 @@
-
-float $stairHight = 2;
-float $stairDepth = 2;
-float $stairWidth = 8;
-
-float $stairYvalue = $stairHight;
-
-int $stiarnumber;
-int $indacatedStepnumber = 120;
-
-float $offcenter;
-float $yOffSet = 13;
-
-while($indacatedStepnumber > $stiarnumber)
+proc GenerateStairCase(float $stairHight,float $stairDepth,float $stairWidth,int $indacatedStepnumber,float $yOffSet,float $pivotX,float $pivotY,float $pivotZ)
 {
+ /////////// Values /////////////
 
-string $steps[] = `polyCube -height $stairHight -width $stairWidth -depth $stairDepth -n "steps"`;
+    float $stairYvalue = $stairHight;
 
-$offcenter = $stairWidth / 2;
+    int $stiarnumber;
 
-move $offcenter ($stairYvalue + $stiarnumber) 0;
+    float $offcenter;
+ 
 
-rotate -y ($yOffSet * $stiarnumber) -pivot 0 0 0 -componentSpace;
+    while($indacatedStepnumber > $stiarnumber)
+    {
 
-$stiarnumber++;
+    string $steps[] = `polyCube -height $stairHight -width $stairWidth -depth $stairDepth -n "steps"`;
 
+    $offcenter = $stairWidth / 2;
+
+    move $offcenter ($stairYvalue + $stiarnumber) 0;
+
+    rotate -y ($yOffSet * $stiarnumber) -pivot $pivotX $pivotY $pivotZ -componentSpace;
+
+    $stiarnumber++;
+
+    }
 }
+
+//  (stairHight, stairDepth, stairWidth, indacatedStepnumber, yOffSet, pivotX, pivotY, pivotZ)
+GenerateStairCase(2,2,8,24,13,0,0,0);

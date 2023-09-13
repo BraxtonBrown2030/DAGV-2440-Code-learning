@@ -1,0 +1,48 @@
+int $stairHight2 = 2;
+int $stairDepth2 = 2;
+int $stairWidth2 = 8;
+
+    int $userInPutW2;
+int $userInPutW2 = `promptDialog
+    -title "Width of Object"
+    -message "Enter Whole Number:"
+    -button "OK" -button "Cancel"
+    -defaultButton "OK" -cancelButton "Cancel"
+    -dismissString "Cancel"`;
+
+    $userInPutW2 = `promptDialog -query -text`;
+
+    int $userOutputW2 = $userInPutW2;
+
+    print($userOutputW2 + " width output\n");
+    $stairWidth2 = $userOutputW2;
+///////////////// Depth Input TextBox/////////////////////
+    int $userInPutD2;
+int $userInPutD2 = `promptDialog
+    -title "Depth of Object"
+    -message "Enter Whole Number:"
+    -button "OK" -button "Cancel"
+    -defaultButton "OK" -cancelButton "Cancel"
+    -dismissString "Cancel"`;
+
+    $userInPutD2 = `promptDialog -query -text`;
+
+    int $userOutputD2 = $userInPutD2;
+
+    print($userOutputD2 + "depth output\n");
+    $stairDepth2 = $userInPutD2 //Change The value baced in user input
+///////////////// Hight Input TextBox/////////////////////
+    int $userIMPutH2;
+int $userIMPutH2 = `promptDialog
+    -title "Hight of Object"
+    -message "Enter Whole Number:"
+    -button "OK" -button "Cancel"
+    -defaultButton "OK" -cancelButton "Cancel"
+    -dismissString "Cancel"`;
+
+    $userIMPutH2 = `promptDialog -query -text`;
+
+    int $userOutputH2 = $userIMPutH2;
+
+    print($userOutputH2 + "Hight output\n");
+    $stairHight2 = $userIMPutH2;

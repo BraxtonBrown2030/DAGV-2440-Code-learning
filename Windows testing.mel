@@ -1,4 +1,4 @@
-
+//////////////////  good Code /////////////////////////////
 float $stairHight = 2;
 float $stairDepth = 2;
 float $stairWidth = 8;
@@ -6,7 +6,7 @@ float $stairWidth = 8;
 float $stairYvalue = $stairHight;
 
 int $stiarnumber;
-int $indacatedStepnumber = 120;
+int $indacatedStepnumber = 24;
 
 float $offcenter;
 float $yOffSet = 13;
@@ -25,3 +25,51 @@ rotate -y ($yOffSet * $stiarnumber) -pivot 0 0 0 -componentSpace;
 $stiarnumber++;
 
 }
+
+///////////////////New Code///////////////////////////////
+
+///////////////// Width Input TextBox/////////////////////
+int $userInPutW;
+int $userInPutW = `promptDialog
+    -title "Width of Object"
+    -message "Enter Whole Number:"
+    -button "OK" -button "Cancel"
+    -defaultButton "OK" -cancelButton "Cancel"
+    -dismissString "Cancel"`;
+
+    $userInPutW = `promptDialog -query -text`;
+
+    int $userOutputW = $userInPutW;
+
+    print($userOutputW + " width output\n");
+    $stairWidth = $userOutputW;
+///////////////// Depth Input TextBox/////////////////////
+int $userInPutD;
+int $userInPutD = `promptDialog
+    -title "Depth of Object"
+    -message "Enter Whole Number:"
+    -button "OK" -button "Cancel"
+    -defaultButton "OK" -cancelButton "Cancel"
+    -dismissString "Cancel"`;
+
+    $userInPutD = `promptDialog -query -text`;
+
+    int $userOutputD = $userInPutD;
+
+    print($userOutputD + "depth output\n");
+    $stairDepth = $userInPutD //Change The value baced in user input
+///////////////// Hight Input TextBox/////////////////////
+int $userInPutH;
+int $userInPutH = `promptDialog
+    -title "Hight of Object"
+    -message "Enter Whole Number:"
+    -button "OK" -button "Cancel"
+    -defaultButton "OK" -cancelButton "Cancel"
+    -dismissString "Cancel"`;
+
+    $userInPutH = `promptDialog -query -text`;
+
+    int $userOutputH = $userInPutH;
+
+    print($userOutputH + "Hight output\n");
+    $stairHight = $userInPutH;
