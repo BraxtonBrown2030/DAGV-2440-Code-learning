@@ -26,5 +26,5 @@ proc GenerateStairCase(float $stairHight,float $stairDepth,float $stairWidth,int
     }
 }
 
-//  (stairHight, stairDepth, stairWidth, indacatedStepnumber, yOffSet, pivotX, pivotY, pivotZ , centerPillerWidth)
+//  (stairHight, stairDepth, stairWidth, indacatedStepnumber, yOffSet(Rotation), pivotX, pivotY, pivotZ , centerPillerWidth)
 GenerateStairCase(2,2,8,24,13,0,0,0,2);
