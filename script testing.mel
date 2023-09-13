@@ -1,13 +1,12 @@
-proc GenerateStairCase(float $stairHight,float $stairDepth,float $stairWidth,int $indacatedStepnumber,float $yOffSet,float $pivotX,float $pivotY,float $pivotZ)
+proc GenerateStairCase(float $stairHight,float $stairDepth,float $stairWidth,int $indacatedStepnumber,float $yOffSet,float $pivotX,float $pivotY,float $pivotZ, float $centerPiller)
 {
- /////////// Values /////////////
 
     float $stairYvalue = $stairHight;
 
     int $stiarnumber;
 
     float $offcenter;
- 
+    float $centerPiller;
 
     while($indacatedStepnumber > $stiarnumber)
     {
@@ -22,8 +21,10 @@ proc GenerateStairCase(float $stairHight,float $stairDepth,float $stairWidth,int
 
     $stiarnumber++;
 
+    polyCylinder -height $stairHight -radius $centerPiller;
+    move 0 ($stairYvalue + $stiarnumber) 0;
     }
 }
 
-//  (stairHight, stairDepth, stairWidth, indacatedStepnumber, yOffSet, pivotX, pivotY, pivotZ)
-GenerateStairCase(2,2,8,24,13,0,0,0);
+//  (stairHight, stairDepth, stairWidth, indacatedStepnumber, yOffSet, pivotX, pivotY, pivotZ , centerPillerWidth)
+GenerateStairCase(2,2,8,24,13,0,0,0,2);
