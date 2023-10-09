@@ -1,0 +1,132 @@
+proc AddNumber(float $inputnumbers[])
+{
+    float $total;
+
+    for ($i=0; $i<(size($inputnumbers)); $i++)
+    {
+        $total += $inputnumbers[$i];
+    }
+
+    print($total);
+
+}
+
+proc SubtractNumber(float $inputnumbers[])
+{
+    float $total;
+
+    for ($i=0; $i<(size($inputnumbers)); $i++)
+    {
+        $total -= $inputnumbers[$i];
+    }
+
+    print($total);
+
+}
+
+proc MulityplyNumber(float $inputnumbers[])
+{
+    float $total = 1;
+
+    for ($i=0; $i<(size($inputnumbers)); $i++)
+    {
+        $total *= $inputnumbers[$i];
+    }
+
+    print($total);
+
+}
+
+proc DivideNumber(float $inputnumbers[])
+{
+    float $total;
+
+    for ($i=0; $i<(size($inputnumbers)); $i++)
+    {
+       $dicivedsum = $inputnumbers[$i] /= $inputnumbers[1];
+
+        if($i < size($inputnumbers))
+        {
+            $dicivedsum /= $inputnumbers[$i];
+
+            $total = $dicivedsum;
+    
+        } 
+    }
+    print("Your total is: " + $total + "\n");
+
+}
+
+proc PowerOfNumber(float $inputnumber, int $PowerOfNumber)
+{
+    float $total;
+    float $baseinput = $inputnumber;
+
+    for ($i=0; $i<($PowerOfNumber) - 1; $i++)
+    {
+        
+        $inputnumber *= $inputnumber;
+
+        $total = $inputnumber;
+
+    }
+
+    print($baseinput + " To the power of " + $PowerOfNumber + " is " + $total + "\n");
+
+}
+
+proc MeanOfNUmbers(float $inputnumbers[])
+{
+    float $total;
+
+    for ($i=0; $i<(size($inputnumbers)); $i++)
+    {
+        $total += $inputnumbers[$i];
+    }
+
+    if($total > 0)
+    {
+
+        $total /= 2;
+
+    }
+
+    print("The mean of the numbers " + $inputnumbers[$i] + " is " + $total + "\n");
+
+}
+
+proc MedianOfnumbers(float $inputnumbers[])
+{
+    //temps for swaping verables
+    float $tempVarable1;
+    float $tempVarable2;
+
+    //for printing numbers
+    string $numused = "";
+
+    float $fixednumbers[] = `sort $inputnumbers`; 
+
+    for ($i=0; $i<(size($inputnumbers)); $i++)
+    {
+        $numused += $fixednumbers[$i] + ",";
+    }
+
+    if(size($inputnumbers) % 2 == 0)
+    {
+        int $center = size($inputnumbers) / 2;
+        float $meadain = ($fixednumbers[$center - 1] + $fixednumbers[$center]) / 2.0;
+        print("the median of " + $numused + "is " + $meadain + "\n");
+
+    }
+    else
+    {
+        int $center = size($inputnumbers) / 2;
+        float $medain = $center;
+        print("the median of " + $numused + "is " + $medain + "\n");
+
+    }
+
+}
+
+MedianOfnumbers({10,2,5,1,4,7})
+
