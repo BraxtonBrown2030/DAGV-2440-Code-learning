@@ -133,37 +133,37 @@ proc CalculatorSlector(int $function, float $inputnumbers[])
 
     if($function == 1)
     {
-        AddNumber($numbers);
+        AddNumber($inputnumbers);
     }
 
     else if($function == 2)
     {
-        SubtractNumber($numbers);
+        SubtractNumber($inputnumbers);
     }
 
     else if($function == 3)
     {
-        MulityplyNumber($numbers);
+        MulityplyNumber($inputnumbers);
     }
     
     else if($function == 4)
     {
-        DivideNumber($numbers);
+        DivideNumber($inputnumbers);
     }
 
     else if($function == 5)
     {
-        PowerOfNumber($numbers);
+        PowerOfNumber($inputnumbers);
     }
 
     else if($function == 6)
     {
-        MeanOfNUmbers($numbers);
+        MeanOfNUmbers($inputnumbers);
     }
 
     else if($function == 7)
     {
-        MedianOfnumbers($numbers);
+        MedianOfnumbers($inputnumbers);
     }
     else 
     {
