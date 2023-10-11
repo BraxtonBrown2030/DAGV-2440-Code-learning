@@ -1,0 +1,28 @@
+int $numberofuse;
+
+window;
+columnLayout;
+
+$c = `checkBox - label "Add"
+-onCommand  "onFunction"
+-offCommand "offFunction"`;
+
+showWindow;
+
+
+proc onFunction()
+{
+
+    $numberofuse = 1;
+    print($numberofuse);
+
+}
+
+proc offFunction()
+{
+
+    $numberofuse = 0;
+
+    print($numberofuse);
+
+}
