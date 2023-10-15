@@ -1,0 +1,132 @@
+int $dup;
+float $nX;
+float $xX;
+float $nY;
+float $xY;
+float $nZ;
+float $xZ;
+
+
+global proc randomPlacement(int $numDuplicates, float $minX, float $maxX, float $minY, float $maxY, float $minZ, float $maxZ)
+{
+    string $userimputDuplicates = `optionVar -q  "NumberOfObjects"`;
+    string $userimputMinX= `optionVar -q  "MinX"`;
+    string $userimputMaxX= `optionVar -q  "MaxX"`;
+    string $userimputMinY= `optionVar -q  "MinY"`;
+    string $userimputMaxY= `optionVar -q  "MaxY"`;
+    string $userimputMinZ= `optionVar -q  "MinZ"`;
+    string $userimputMaxZ= `optionVar -q  "MaxZ"`;
+
+
+    int $userimputDuplicatesValue = `intField -q -value $userimputDuplicates`;
+    float $userimputMinXValue = `floatField -q -value $userimputMinX`;
+    float $userimputMaxXValue = `floatField -q -value $userimputMaxX`;
+    float $userimputMinYValue = `floatField -q -value $userimputMinY`;
+    float $userimputMaxYValue = `floatField -q -value $userimputMaxY`;
+    float $userimputMinZValue = `floatField -q -value $userimputMinZ`;
+    float $userimputMaxZValue = `floatField -q -value $userimputMaxZ`;
+
+     $dup = $userimputDuplicatesValue;
+     $nX = $userimputMinXValue;
+     $xX = $userimputMaxXValue;
+     $nY = $userimputMinYValue;
+     $xY = $userimputMaxYValue;
+     $nZ = $userimputMinZValue;
+     $xZ = $userimputMaxZValue;
+
+
+    string $sels[] = `ls -sl`;  // Get currently selected objects
+
+    if (size($sels) == 0)
+    {
+        error "Make a selection before running RandomPlacement();";
+    }
+
+    for ($i=0; $i<size($sels); $i++)  // Loop through each selected object
+    {
+        for($j=0; $j<$numDuplicates; $j++)  // Perform the following code block on each object, $numDuplicates times
+        {
+            string $dups[] = `duplicate -rr $sels[$i]`;  // Duplicate the indicated selected object
+            string $dup = $dups[0];  // Assign the duplicate to a string variable
+
+            // Generate random position within specified ranges
+            float $randX = `rand $minX $maxX`;
+            float $randY = `rand $minY $maxY`;
+            float $randZ = `rand $minZ $maxZ`;
+
+            // Set the position of the duplicate to the random values
+            xform -worldSpace -translation $randX $randY $randZ $dup;
+        }
+    }
+
+}
+
+
+global proc generatestuff()
+{
+    
+    string $userimputDuplicates = `optionVar -q  "NumberOfObjects"`;
+    string $userimputMinX= `optionVar -q  "MinX"`;
+    string $userimputMaxX= `optionVar -q  "MaxX"`;
+    string $userimputMinY= `optionVar -q  "MinY"`;
+    string $userimputMaxY= `optionVar -q  "MaxY"`;
+    string $userimputMinZ= `optionVar -q  "MinZ"`;
+    string $userimputMaxZ= `optionVar -q  "MaxZ"`;
+
+
+    int $userimputDuplicatesValue = `intField -q -value $userimputDuplicates`;
+    float $userimputMinXValue = `floatField -q -value $userimputMinX`;
+    float $userimputMaxXValue = `floatField -q -value $userimputMaxX`;
+    float $userimputMinYValue = `floatField -q -value $userimputMinY`;
+    float $userimputMaxYValue = `floatField -q -value $userimputMaxY`;
+    float $userimputMinZValue = `floatField -q -value $userimputMinZ`;
+    float $userimputMaxZValue = `floatField -q -value $userimputMaxZ`;
+
+    $dup = $userimputDuplicatesValue;
+     $nX = $userimputMinXValue;
+     $xX = $userimputMaxXValue;
+     $nY = $userimputMinYValue;
+     $xY = $userimputMaxYValue;
+     $nZ = $userimputMinZValue;
+     $xZ = $userimputMaxZValue;
+
+
+
+    randomPlacement($dup,$nX,$xX,$nY,$xY,$nZ,$xZ);
+
+}
+
+
+///////////////UI elements////////////////
+
+global string $mainwindow = "generation window";
+
+if(`window -exists $mainwindow`)
+    deleteUI $mainwindow;
+
+$mainwindow = `window - height 400
+                        -width 600
+                        - title "Random Generation"
+                        - sizeable 1
+                        $mainwindow`;
+
+string $mainColumn = `columnLayout`;
+
+
+    text -label "Number Of Objects";
+    optionVar -stringValue "NumberOfObjects" `intField`;
+        text -label "Min X Value";
+    optionVar -stringValue "MinX" `floatField`;
+        text -label "Max X Value";
+    optionVar -stringValue "MaxX" `floatField`;
+        text -label "Min Y Value";
+    optionVar -stringValue "MinY" `floatField`;
+        text -label "Max Y Value";
+    optionVar -stringValue "MaxY" `floatField`;
+        text -label "Min Z Value";
+    optionVar -stringValue "MinZ" `floatField`;
+        text -label "Max Z Value";
+    optionVar -stringValue "MaxZ" `floatField`;      
+    button -parent $mainColumn -label "Generate" -command  generatestuff;
+
+showWindow $mainwindow; 
